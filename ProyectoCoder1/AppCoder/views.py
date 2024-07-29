@@ -6,7 +6,6 @@ from django.http import HttpResponse
 from AppCoder.forms import CursoFormulario
 from AppCoder.forms import EstudianteFormulario
 from AppCoder.forms import ProfesorFormulario
-# Create your views here.
 
 
 def inicio(request):
@@ -31,16 +30,16 @@ def estudiantes(request):
 
 def cursoFormulario(request):
     if request.method == 'POST':
-        miFormulario = CursoFormulario(request.POST)  # Aquí llega toda la información del HTML
+        miFormulario = CursoFormulario(request.POST) 
         print(miFormulario)
 
         if miFormulario.is_valid:  # Si pasó la validación de Django
             informacion = miFormulario.cleaned_data
             curso = Curso(nombre=informacion['curso'], camada=informacion['camada'])
             curso.save()
-            return render(request, "AppCoder/inicio.html")  # Vuelvo al inicio o a donde quieran
+            return render(request, "AppCoder/inicio.html")
     else:
-        miFormulario = CursoFormulario()  # Formulario vacío para construir el HTML
+        miFormulario = CursoFormulario()  
     return render(request, "AppCoder/cursoFormulario.html", {"miFormulario":miFormulario})
 
 
@@ -60,29 +59,29 @@ def buscar(request):
 
 def estudianteFormulario(request):
     if request.method == 'POST':
-        miFormulario = EstudianteFormulario(request.POST)  # Aquí llega toda la información del HTML
+        miFormulario = EstudianteFormulario(request.POST)
         print(miFormulario)
 
         if miFormulario.is_valid:  # Si pasó la validación de Django
             informacion = miFormulario.cleaned_data
             estudiante = Estudiante(nombre = informacion["nombre"], apellido = informacion["apellido"], email = informacion ["email"])
             estudiante.save()
-            return render(request, "AppCoder/inicio.html")  # Vuelvo al inicio o a donde quieran
+            return render(request, "AppCoder/inicio.html") 
     else:
-        miFormulario = EstudianteFormulario()  # Formulario vacío para construir el HTML
+        miFormulario = EstudianteFormulario()  
     return render(request, "AppCoder/estudiantesFormulario.html", {"miFormulario":miFormulario})
 
 
 def profesorFormulario(request):
     if request.method == 'POST':
-        miFormulario = ProfesorFormulario(request.POST)  # Aquí llega toda la información del HTML
+        miFormulario = ProfesorFormulario(request.POST) 
         print(miFormulario)
 
         if miFormulario.is_valid:  # Si pasó la validación de Django
             informacion = miFormulario.cleaned_data
             profesor = Profesor(nombre = informacion["nombre"], apellido = informacion["apellido"], email = informacion ["email"], profesion = informacion ["profesion"])
             profesor.save()
-            return render(request, "AppCoder/inicio.html")  # Vuelvo al inicio o a donde quieran
+            return render(request, "AppCoder/inicio.html")
     else:
-        miFormulario = ProfesorFormulario()  # Formulario vacío para construir el HTML
+        miFormulario = ProfesorFormulario() 
     return render(request, "AppCoder/profesorFormulario.html", {"miFormulario":miFormulario})
