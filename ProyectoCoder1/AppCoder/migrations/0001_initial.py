@@ -20,16 +20,6 @@ class Migration(migrations.Migration):
             ],
         ),
         migrations.CreateModel(
-            name='Entregable',
-            fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('nombre', models.CharField(max_length=30)),
-                ('fechaDeEntrega', models.FloatField()),
-                ('email', models.EmailField(max_length=254)),
-                ('entregado', models.BooleanField()),
-            ],
-        ),
-        migrations.CreateModel(
             name='Estudiante',
             fields=[
                 ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
